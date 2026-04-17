@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>セールスサポート｜売り込まない、再現性のあるセールス</title>
+  <meta name="description" content="月商30万以下の起業家が、売り込まずに売れる仕組みを手に入れるオンラインサロン。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0d1b2a;
+      --blue:   #1a56db;
+      --blue-l: #3b82f6;
+      --accent: #f59e0b;
+      --green:  #10b981;
+      --gray-1: #f8fafc;
+      --gray-2: #e2e8f0;
+      --gray-3: #94a3b8;
+      --text:   #1e293b;
+      --white:  #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans JP', sans-serif; color: var(--text); background: var(--white); line-height: 1.7; }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(13,27,42,0.95); backdrop-filter: blur(8px);
+      padding: 14px 24px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { color: var(--white); font-size: 1.1rem; font-weight: 700; letter-spacing: .05em; }
+    .logo span { color: var(--accent); }
+    .header-cta {
+      background: var(--accent); color: var(--navy); font-weight: 700;
+      padding: 10px 22px; border-radius: 6px; text-decoration: none; font-size: .9rem;
+      transition: opacity .2s;
+    }
+    .header-cta:hover { opacity: .85; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh; background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      padding: 100px 24px 60px; text-align: center; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(26,86,219,.35) 0%, transparent 70%);
+    }
+    .hero-inner { position: relative; max-width: 820px; }
+    .hero-badge {
+      display: inline-block; background: rgba(245,158,11,.15); border: 1px solid var(--accent);
+      color: var(--accent); font-size: .8rem; font-weight: 700; letter-spacing: .1em;
+      padding: 6px 16px; border-radius: 99px; margin-bottom: 28px;
+    }
+    .hero h1 {
+      color: var(--white); font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 900;
+      line-height: 1.3; margin-bottom: 24px;
+    }
+    .hero h1 em { color: var(--accent); font-style: normal; }
+    .hero-sub {
+      color: #94a3b8; font-size: clamp(1rem, 2.5vw, 1.2rem);
+      max-width: 600px; margin: 0 auto 40px;
+    }
+    .hero-cta-wrap { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .btn-primary {
+      display: inline-block; background: var(--accent); color: var(--navy);
+      font-size: 1.1rem; font-weight: 900; padding: 18px 48px; border-radius: 8px;
+      text-decoration: none; transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 24px rgba(245,158,11,.4);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(245,158,11,.5); }
+    .hero-note { color: #64748b; font-size: .85rem; }
+
+    /* ── SECTION BASE ── */
+    section { padding: 80px 24px; }
+    .container { max-width: 900px; margin: 0 auto; }
+    .section-label {
+      text-align: center; color: var(--blue-l); font-size: .8rem; font-weight: 700;
+      letter-spacing: .15em; text-transform: uppercase; margin-bottom: 12px;
+    }
+    .section-title {
+      text-align: center; font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 900;
+      line-height: 1.4; margin-bottom: 16px;
+    }
+    .section-lead {
+      text-align: center; color: #64748b; font-size: 1rem; max-width: 600px; margin: 0 auto 56px;
+    }
+
+    /* ── PAIN ── */
+    .pain { background: var(--gray-1); }
+    .pain-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .pain-card {
+      background: var(--white); border: 1px solid var(--gray-2);
+      border-radius: 12px; padding: 24px; display: flex; gap: 14px; align-items: flex-start;
+    }
+    .pain-icon { font-size: 1.6rem; flex-shrink: 0; margin-top: 2px; }
+    .pain-card p { font-size: .95rem; font-weight: 500; line-height: 1.6; }
+
+    /* ── SOLUTION ── */
+    .solution-box {
+      background: var(--navy); border-radius: 16px; padding: 48px 40px; text-align: center;
+      color: var(--white); margin-bottom: 56px;
+    }
+    .solution-box h3 { font-size: clamp(1.4rem, 3.5vw, 2rem); font-weight: 900; line-height: 1.5; margin-bottom: 16px; }
+    .solution-box h3 em { color: var(--accent); font-style: normal; }
+    .solution-box p { color: #94a3b8; font-size: 1rem; max-width: 560px; margin: 0 auto; }
+
+    /* ── FEATURES ── */
+    .features { background: var(--white); }
+    .features-list { display: grid; gap: 24px; }
+    .feature-item {
+      display: grid; grid-template-columns: 56px 1fr; gap: 20px; align-items: start;
+      background: var(--gray-1); border-radius: 12px; padding: 28px;
+    }
+    .feature-num {
+      width: 56px; height: 56px; border-radius: 12px; background: var(--blue);
+      color: var(--white); font-size: 1.4rem; font-weight: 900;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .feature-item h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+    .feature-item p { color: #64748b; font-size: .92rem; }
+
+    /* ── FOR WHO ── */
+    .forwho { background: var(--navy); }
+    .forwho .section-title { color: var(--white); }
+    .forwho .section-lead { color: #94a3b8; }
+    .check-list { display: grid; gap: 14px; max-width: 640px; margin: 0 auto; }
+    .check-item {
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+      border-radius: 10px; padding: 16px 20px; display: flex; gap: 14px; align-items: center;
+      color: var(--white); font-size: .95rem;
+    }
+    .check-item::before {
+      content: '✓'; width: 28px; height: 28px; border-radius: 50%;
+      background: var(--green); color: var(--white); font-weight: 900; font-size: .85rem;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+
+    /* ── PRICING ── */
+    .pricing { background: var(--gray-1); }
+    .price-cards { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); max-width: 700px; margin: 0 auto; }
+    .price-card {
+      background: var(--white); border: 2px solid var(--gray-2);
+      border-radius: 16px; padding: 36px 32px; text-align: center; position: relative;
+    }
+    .price-card.featured { border-color: var(--blue); }
+    .price-badge {
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      background: var(--blue); color: var(--white); font-size: .75rem; font-weight: 700;
+      padding: 5px 16px; border-radius: 99px; white-space: nowrap;
+    }
+    .price-plan { font-size: .85rem; font-weight: 700; color: var(--gray-3); letter-spacing: .1em; margin-bottom: 12px; }
+    .price-amount { font-size: 2.8rem; font-weight: 900; color: var(--navy); margin-bottom: 4px; }
+    .price-amount span { font-size: 1rem; font-weight: 500; color: var(--gray-3); }
+    .price-save { font-size: .8rem; color: var(--green); font-weight: 700; margin-bottom: 24px; }
+    .price-features { list-style: none; margin-bottom: 32px; display: flex; flex-direction: column; gap: 10px; }
+    .price-features li { font-size: .9rem; color: #475569; display: flex; align-items: center; gap: 8px; }
+    .price-features li::before { content: '✓'; color: var(--green); font-weight: 900; }
+    .btn-price {
+      display: block; width: 100%; padding: 14px; border-radius: 8px; font-weight: 700;
+      font-size: 1rem; text-decoration: none; transition: opacity .2s;
+    }
+    .btn-price:hover { opacity: .85; }
+    .btn-price.primary { background: var(--blue); color: var(--white); }
+    .btn-price.secondary { background: var(--gray-1); color: var(--navy); border: 2px solid var(--gray-2); }
+
+    /* ── FAQ ── */
+    .faq { background: var(--white); }
+    .faq-list { display: flex; flex-direction: column; gap: 12px; max-width: 700px; margin: 0 auto; }
+    details {
+      background: var(--gray-1); border-radius: 10px; overflow: hidden;
+    }
+    summary {
+      padding: 20px 24px; font-weight: 700; cursor: pointer; list-style: none;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: .95rem;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: '+'; font-size: 1.4rem; font-weight: 400; color: var(--blue-l); flex-shrink: 0; }
+    details[open] summary::after { content: '−'; }
+    .faq-answer { padding: 0 24px 20px; color: #64748b; font-size: .93rem; line-height: 1.8; }
+
+    /* ── FINAL CTA ── */
+    .final-cta {
+      background: var(--navy); text-align: center; padding: 80px 24px;
+    }
+    .final-cta h2 { color: var(--white); font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 900; line-height: 1.4; margin-bottom: 16px; }
+    .final-cta h2 em { color: var(--accent); font-style: normal; }
+    .final-cta p { color: #94a3b8; margin-bottom: 40px; font-size: 1rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #060d14; color: #475569; font-size: .8rem;
+      text-align: center; padding: 24px;
+    }
+    footer a { color: #64748b; text-decoration: none; }
+    footer a:hover { color: var(--white); }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 12px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .solution-box { padding: 32px 24px; }
+      .feature-item { grid-template-columns: 1fr; }
+      .feature-num { width: 44px; height: 44px; font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">セールス<span>サポート</span></div>
+  <a href="#pricing" class="header-cta">無料体験を始める</a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">月商30万以下の起業家へ</div>
+    <h1>売り込まなくても<br><em>売れる仕組み</em>が<br>手に入る</h1>
+    <p class="hero-sub">
+      頑張っているのに売上が伸びない。<br>
+      その原因は「努力不足」ではなく、<br>「売れる仕組み」がないからです。
+    </p>
+    <div class="hero-cta-wrap">
+      <a href="#pricing" class="btn-primary">7日間無料で体験する →</a>
+      <p class="hero-note">クレジットカード登録不要・いつでも解約可能</p>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="pain">
+  <div class="container">
+    <p class="section-label">こんな悩みありませんか？</p>
+    <h2 class="section-title">頑張っているのに<br>売上が安定しない理由</h2>
+    <p class="section-lead">多くの起業家が同じ壁にぶつかっています</p>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-icon">😰</div>
+        <p>SNSを毎日投稿しているのに問い合わせが来ない</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">😓</div>
+        <p>売り込む気がなくても、お客様に「押し売り」と思われてしまう</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">😔</div>
+        <p>月によって売上の波が激しく、来月の見通しが立たない</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">🤔</div>
+        <p>何を、どの順番で発信すれば良いかわからない</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">😞</div>
+        <p>値段を下げないと売れない気がして、単価を上げられない</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">💸</div>
+        <p>広告費をかけても売上につながらず、費用だけが増える</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="features">
+  <div class="container">
+    <div class="solution-box">
+      <h3>問題は「売り方」ではなく<br><em>「仕組み」がないこと</em>です</h3>
+      <p>
+        セールスサポートでは、売り込まずに「欲しい」と言ってもらえる<br>
+        再現性のある仕組みを、あなたのビジネスに合わせて構築します。
+      </p>
+    </div>
+
+    <p class="section-label">サロンで手に入るもの</p>
+    <h2 class="section-title">4つの柱で<br>売れる仕組みを作る</h2>
+    <p class="section-lead">感覚ではなく、誰でも再現できるフレームワークを提供します</p>
+
+    <div class="features-list">
+      <div class="feature-item">
+        <div class="feature-num">1</div>
+        <div>
+          <h4>集客の仕組み化</h4>
+          <p>「誰に・何を・どう発信するか」を言語化。毎日投稿しなくても、理想のお客様が集まるコンテンツ設計の方法を学びます。</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-num">2</div>
+        <div>
+          <h4>信頼構築の自動化</h4>
+          <p>LINEやメールを使った「出会いから成約まで」の導線設計。一度作れば自動で信頼が積み上がる仕組みを手に入れます。</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-num">3</div>
+        <div>
+          <h4>売り込まない成約術</h4>
+          <p>お客様自身が「お願いします」と言ってくれるクロージングフロー。断られることなく、自然に成約につながる対話の型。</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-num">4</div>
+        <div>
+          <h4>月商を安定させるリピート設計</h4>
+          <p>新規集客に頼らない、既存顧客からの継続・紹介が生まれる仕組み。売上の波をなくして安定した月商を実現します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHO -->
+<section class="forwho">
+  <div class="container">
+    <p class="section-label" style="color:#60a5fa">こんな方におすすめ</p>
+    <h2 class="section-title">このサロンが向いている人</h2>
+    <p class="section-lead">当てはまる方ほど、最短で結果が出ます</p>
+    <div class="check-list">
+      <div class="check-item">現在の月商が30万円以下で、安定させたい</div>
+      <div class="check-item">コーチ・コンサル・士業・講師など、知識・スキルを売っている</div>
+      <div class="check-item">SNS発信はしているが、問い合わせや成約につながっていない</div>
+      <div class="check-item">売り込みや押しつけが苦手で、自分らしい方法で売りたい</div>
+      <div class="check-item">仕組みを作って、時間と収入を両立したい</div>
+      <div class="check-item">再現性のある方法を学んで、自走できるようになりたい</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <p class="section-label">料金プラン</p>
+    <h2 class="section-title">シンプルな<br>2つのプラン</h2>
+    <p class="section-lead">まずは7日間無料で体験してから、続けるか決めてください</p>
+    <div class="price-cards">
+      <div class="price-card">
+        <p class="price-plan">月額プラン</p>
+        <div class="price-amount">¥4,980<span>/月</span></div>
+        <p class="price-save">まず試したい方に</p>
+        <ul class="price-features">
+          <li>全コンテンツ閲覧し放題</li>
+          <li>週1回のライブ配信</li>
+          <li>コミュニティ参加</li>
+          <li>個別相談（月1回）</li>
+          <li>7日間無料体験つき</li>
+        </ul>
+        <a href="https://buy.stripe.com/monthly" class="btn-price secondary" id="btn-monthly">
+          無料体験を始める
+        </a>
+      </div>
+      <div class="price-card featured">
+        <div class="price-badge">🔥 おすすめ・2ヶ月分お得</div>
+        <p class="price-plan">年額プラン</p>
+        <div class="price-amount">¥49,800<span>/年</span></div>
+        <p class="price-save">月換算 ¥4,150（¥830お得）</p>
+        <ul class="price-features">
+          <li>全コンテンツ閲覧し放題</li>
+          <li>週1回のライブ配信</li>
+          <li>コミュニティ参加</li>
+          <li>個別相談（月1回）</li>
+          <li>過去アーカイブ全解放</li>
+          <li>優先サポート</li>
+        </ul>
+        <a href="https://buy.stripe.com/yearly" class="btn-price primary" id="btn-yearly">
+          年額プランで始める
+        </a>
+      </div>
+    </div>
+    <p style="text-align:center;color:#94a3b8;font-size:.82rem;margin-top:24px">
+      ※ 無料体験期間中は課金されません。7日後に自動移行。いつでも解約可能。
+    </p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <p class="section-label">よくある質問</p>
+    <h2 class="section-title">FAQ</h2>
+    <p class="section-lead" style="margin-bottom:40px">不安な点はここで解消してください</p>
+    <div class="faq-list">
+      <details>
+        <summary>どんな業種・職種でも使えますか？</summary>
+        <div class="faq-answer">コーチ・コンサルタント・講師・士業・セラピスト・デザイナーなど、知識・スキル・サービスを販売している方であれば業種問わず活用できます。</div>
+      </details>
+      <details>
+        <summary>副業・起業したばかりでも参加できますか？</summary>
+        <div class="faq-answer">はい。むしろ最初から正しい仕組みを作ることで、遠回りせずに売上を伸ばすことができます。初心者の方でもわかりやすく解説しています。</div>
+      </details>
+      <details>
+        <summary>無料体験期間中にキャンセルすれば費用はかかりませんか？</summary>
+        <div class="faq-answer">7日間の無料体験期間中にキャンセルすれば、一切費用はかかりません。LINEまたはマイページからいつでも解約手続きが可能です。</div>
+      </details>
+      <details>
+        <summary>コンテンツはどのように配信されますか？</summary>
+        <div class="faq-answer">LINEに毎日コンテンツが届きます。動画・テキスト・音声など様々な形式で、隙間時間に学べるよう設計されています。</div>
+      </details>
+      <details>
+        <summary>月額から年額に変更できますか？</summary>
+        <div class="faq-answer">はい、いつでもプラン変更が可能です。変更後は次の請求日から年額プランが適用されます。</div>
+      </details>
+      <details>
+        <summary>解約後もコンテンツは見られますか？</summary>
+        <div class="faq-answer">解約後はコンテンツへのアクセスができなくなります。退会前にダウンロード可能なコンテンツは保存しておくことをお勧めします。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <h2>まず、<em>7日間試してみてください。</em></h2>
+    <p>費用は一切かかりません。合わなければ、それで終わりでいい。</p>
+    <a href="#pricing" class="btn-primary">無料体験を始める →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="/tokusho">特定商取引法に基づく表記</a>
+    <a href="/privacy">プライバシーポリシー</a>
+    <a href="/terms">利用規約</a>
+  </div>
+  <p>© 2026 セールスサポート</p>
+</footer>
+
+<script>
+  // Stripe決済URLをここに設定
+  const STRIPE_MONTHLY = 'https://buy.stripe.com/（月額リンク）';
+  const STRIPE_YEARLY  = 'https://buy.stripe.com/（年額リンク）';
+
+  document.getElementById('btn-monthly').href = STRIPE_MONTHLY;
+  document.getElementById('btn-yearly').href  = STRIPE_YEARLY;
+
+  // ヘッダーのCTAも年額リンクに
+  document.querySelector('.header-cta').href = '#pricing';
+
+  // スクロールアニメーション
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.style.opacity = '1';
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.pain-card, .feature-item, .check-item, .price-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transition = 'opacity .5s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
